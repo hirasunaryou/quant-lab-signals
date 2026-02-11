@@ -52,6 +52,14 @@ PYTHONPATH=src python -m cli --symbol 1306.T
 - `as_of`
 - `metrics: { atr, atr_thresh, ema_diff }`
 
+
+## Learning path
+
+- 理論ドキュメント: `docs/01_financial_time_series_statistics.md`
+- Notebook 04: `notebooks/04_returns_distribution.ipynb`（リターン分布、歪度・尖度、Quantile Plot）
+- Notebook 05: `notebooks/05_volatility_clustering.ipynb`（ローリング標準偏差、ATR、|ret| と ret^2 の自己相関）
+- Notebook 06: `notebooks/06_autocorr_stationarity_basics.ipynb`（ACF手実装、定常性の直感、任意でADF検定）
+
 ## Run tests
 ```bash
 PYTHONPATH=src pytest -q

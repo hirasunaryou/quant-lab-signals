@@ -6,6 +6,7 @@ from .indicators import atr, ema
 from .io import from_json, to_json
 from .plot import plot_atr_regime, plot_cross_points, plot_price_ema
 from .rules import make_signal
+from .stats import autocorr, log_returns, rolling_volatility
 
 __all__ = [
     "Metrics",
@@ -20,4 +21,7 @@ __all__ = [
     "plot_price_ema",
     "plot_atr_regime",
     "plot_cross_points",
+    "log_returns",
+    "autocorr",
+    "rolling_volatility",
 ]
