@@ -21,6 +21,9 @@ dev = [
   "pytest",
   "jupyter",
 ]
+ml = [
+  "scikit-learn",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
