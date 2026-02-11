@@ -54,3 +54,4 @@ def test_cross_detection_buy_on_synthetic_series() -> None:
     signal = make_signal(df)
     assert signal["signal"] == "BUY"
     assert len(signal["reasons"]) == 3
+    assert set(signal["metrics"].keys()) == {"atr", "atr_thresh", "ema_diff"}

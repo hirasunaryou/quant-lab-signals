@@ -12,10 +12,15 @@ Signal = Literal["BUY", "SELL", "HOLD"]
 def make_signal(df: pd.DataFrame) -> dict:
     """Generate a rule-based signal using ATR activity and EMA cross.
 
-    Rule summary (same as legacy script):
+    Rule summary:
     - Active regime: ATR(14) > median of ATR(14) over the latest 60 rows.
     - Signal trigger: EMA12/EMA26 cross on latest row, only when active.
     - reasons is trimmed to top 3 for UI readability.
+
+    Returns
+    -------
+    dict
+        Legacy-compatible keys plus `metrics` for richer diagnostics.
     """
     if len(df) < 120:
         raise ValueError("Not enough data (need ~120 trading days).")
@@ -32,14 +37,15 @@ def make_signal(df: pd.DataFrame) -> dict:
     fallback = work["ATR14"].dropna().median()
     atr_thresh = float(atr_window.median()) if len(atr_window) else float(fallback)
 
-    active = float(last["ATR14"]) > atr_thresh
+    atr_last = float(last["ATR14"])
+    active = atr_last > atr_thresh
 
     ema_diff_last = float(last["EMA12"] - last["EMA26"])
     ema_diff_prev = float(prev["EMA12"] - prev["EMA26"])
 
     signal: Signal = "HOLD"
     reasons: list[str] = [
-        f"ATR(14)={float(last['ATR14']):.4f} vs thresh(median60)={atr_thresh:.4f}",
+        f"ATR(14)={atr_last:.4f} vs thresh(median60)={atr_thresh:.4f}",
         f"EMA12-EMA26={ema_diff_last:.4f} (prev {ema_diff_prev:.4f})",
     ]
 
@@ -72,4 +78,9 @@ def make_signal(df: pd.DataFrame) -> dict:
         "active": active,
         "signal": signal,
         "reasons": reasons[:3],
+        "metrics": {
+            "atr": atr_last,
+            "atr_thresh": atr_thresh,
+            "ema_diff": ema_diff_last,
+        },
     }
