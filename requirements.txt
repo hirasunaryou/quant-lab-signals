@@ -1,6 +1,8 @@
-pandas
+# Python version: 3.12+
+# Runtime dependencies only
+
 yfinance
-matplotlib
-jupyter
-pytest
+pandas
 numpy
+matplotlib
+tqdm

@@ -47,7 +47,7 @@ C:\work\quant_lab\
 py -3.12 -m venv .venv
 .\.venv\Scripts\activate
 python -m pip install -U pip
-pip install -r re.txt
+pip install -r requirements-dev.txt  # notebooks/tests を使う場合（runtimeのみなら requirements.txt）
 ```
 
 ---

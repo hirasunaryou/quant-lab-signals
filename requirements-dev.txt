@@ -1,0 +1,7 @@
+# Python version: 3.12+
+# Development / learning dependencies
+
+-r requirements.txt
+pytest
+jupyter
+ipykernel
