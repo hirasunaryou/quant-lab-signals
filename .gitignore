@@ -1,8 +1,17 @@
-.venv/
+# Python
 __pycache__/
+*.py[cod]
+*.so
+.venv/
+.pytest_cache/
+
+# Notebook
 .ipynb_checkpoints/
+
+# Outputs (generated artifacts)
 outputs/*
 !outputs/.gitkeep
+
+# OS
 .DS_Store
-*.log
-signals.json
+Thumbs.db

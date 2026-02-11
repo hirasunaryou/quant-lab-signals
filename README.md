@@ -18,30 +18,29 @@ export PYTHONPATH=src
 ```
 
 ## Package layout
-- `src/quantlab/data.py`: market data loading (`fetch_ohlc`)
-- `src/quantlab/indicators.py`: EMA / ATR indicators
-- `src/quantlab/rules.py`: rule-based signal generation
-- `src/quantlab/plot.py`: visualization helpers
-- `src/cli.py`: command line entry point
+- `configs/`: symbol list and rule/notification configs
+- `src/quantlab/contract.py`: stable JSON contract dataclasses
+- `src/quantlab/io.py`: contract serialization (`to_json`, `from_json`)
+- `src/quantlab/cli.py`: command line entry point
+- `notebooks/`: visualize / diagnostics / backtest notebooks
+- `outputs/`: generated files (ignored except `.gitkeep`)
 
 ## Run CLI
 Generate a signal JSON for one symbol:
 ```bash
-PYTHONPATH=src python -m cli --symbol 1306.T --period 2y --out outputs/signals.json
+PYTHONPATH=src python -m quantlab.cli --symbol 1306.T --period 2y --out outputs/signals.json
 ```
 
-## Run notebook
+Backward compatibility wrapper also exists:
 ```bash
-PYTHONPATH=src jupyter notebook notebooks/01_visualize_signals.ipynb
+PYTHONPATH=src python -m cli --symbol 1306.T
 ```
 
-The notebook:
-1. Fetches one symbol
-2. Computes EMA12/EMA26 and ATR14
-3. Draws:
-   - `plot_price_ema`
-   - `plot_atr_regime`
-   - `plot_cross_points`
+## Signal JSON contract
+`outputs/signals.json` keeps legacy keys and adds:
+- `engine_version`
+- `as_of`
+- `metrics: { atr, atr_thresh, ema_diff }`
 
 ## Run tests
 ```bash

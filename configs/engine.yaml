@@ -1,0 +1,7 @@
+engine_version: v0
+ruleset: ema_atr_v0
+parameters:
+  ema_fast: 12
+  ema_slow: 26
+  atr_period: 14
+  atr_threshold_window: 60
