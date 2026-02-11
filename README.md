@@ -26,10 +26,20 @@ export PYTHONPATH=src
 - `outputs/`: generated files (ignored except `.gitkeep`)
 
 ## Run CLI
-Generate a signal JSON for one symbol:
+Generate a signal JSON for one symbol (existing output format is unchanged):
 ```bash
 PYTHONPATH=src python -m quantlab.cli --symbol 1306.T --period 2y --out outputs/signals.json
 ```
+
+Generate a bundled signal JSON for multiple symbols from a file:
+```bash
+PYTHONPATH=src python -m quantlab.cli --symbols-file configs/symbols.json --period 2y --interval 1d --out outputs/signals_bundle.json
+```
+
+`--symbols-file` accepts either:
+- `{"symbols": ["1306.T", "QQQ"]}`
+- `{"symbols": [{"symbol": "1306.T", "name": "TOPIX ETF"}, "QQQ"]}`
+- ` ["1306.T", "QQQ"] `
 
 Backward compatibility wrapper also exists:
 ```bash
