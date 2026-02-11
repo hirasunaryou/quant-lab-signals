@@ -12,6 +12,14 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+For notebooks / tests (development environment), install dev dependencies:
+```bash
+pip install -r requirements-dev.txt
+```
+
+> `requirements.txt` keeps runtime dependencies minimal.
+> `requirements-dev.txt` includes notebook/test tooling (`jupyter`, `ipykernel`, `pytest`).
+
 For local development, add `src` to your import path:
 ```bash
 export PYTHONPATH=src
