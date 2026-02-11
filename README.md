@@ -17,6 +17,12 @@ For notebooks / tests (development environment), install dev dependencies:
 pip install -r requirements-dev.txt
 ```
 
+
+For optional ML notebooks support:
+```bash
+pip install ".[ml]"
+```
+
 > `requirements.txt` keeps runtime dependencies minimal.
 > `requirements-dev.txt` includes notebook/test tooling (`jupyter`, `ipykernel`, `pytest`).
 
@@ -67,6 +73,9 @@ PYTHONPATH=src python -m cli --symbol 1306.T
 - Notebook 04: `notebooks/04_returns_distribution.ipynb`（リターン分布、歪度・尖度、Quantile Plot）
 - Notebook 05: `notebooks/05_volatility_clustering.ipynb`（ローリング標準偏差、ATR、|ret| と ret^2 の自己相関）
 - Notebook 06: `notebooks/06_autocorr_stationarity_basics.ipynb`（ACF手実装、定常性の直感、任意でADF検定）
+- ML Bridge doc: `docs/03_ml_bridge_feature_label_validation.md`（ラベル定義、特徴量カテゴリ、リーク防止、walk-forward）
+- Notebook 09: `notebooks/09_feature_engineering_basics.ipynb`（OHLCVからの特徴量作成、相関・分布可視化）
+- Notebook 10: `notebooks/10_walk_forward_validation.ipynb`（6m/1m walk-forward、ベースライン分類、精度と収益代理指標）
 
 ## Run tests
 ```bash
