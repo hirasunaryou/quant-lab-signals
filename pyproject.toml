@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantlab-signals"
+version = "0.1.0"
+description = "Quant lab signals engine (research -> mobile -> automation)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "yfinance",
+  "pandas",
+  "numpy",
+  "matplotlib",
+  "tqdm",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "jupyter",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
