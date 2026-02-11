@@ -64,9 +64,12 @@ PYTHONPATH=src python -m cli --symbol 1306.T
 ## Learning path
 
 - 理論ドキュメント: `docs/01_financial_time_series_statistics.md`
+- 理論ドキュメント: `docs/02_rule_diagnostics_and_improvements.md`（ルール診断、アブレーション、リーク回避）
 - Notebook 04: `notebooks/04_returns_distribution.ipynb`（リターン分布、歪度・尖度、Quantile Plot）
 - Notebook 05: `notebooks/05_volatility_clustering.ipynb`（ローリング標準偏差、ATR、|ret| と ret^2 の自己相関）
 - Notebook 06: `notebooks/06_autocorr_stationarity_basics.ipynb`（ACF手実装、定常性の直感、任意でADF検定）
+- Notebook 07: `notebooks/07_rule_ablation_study.ipynb`（4つのルール変種を比較するアブレーション研究）
+- Notebook 08: `notebooks/08_parameter_sweep.ipynb`（EMA/ATR/レジーム窓のパラメータスイープ）
 
 ## Run tests
 ```bash
